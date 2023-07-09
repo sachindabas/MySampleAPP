@@ -1,0 +1,38 @@
+﻿@model MySampleApp.Web.Models.AnalyzeViewModel
+
+<h1>Analyze Website</h1>
+
+<form method="post" asp-action="Analyze">
+    <input type="text" name="url" placeholder="Enter URL" />
+    <button type="submit">Analyze</button>
+</form>
+
+@if (Model != null && Model.TopWords != null && Model.TopWords.Any())
+{
+    <h2>Total Words:@Model.TotalWords </h2>
+
+    <h2>Top 10 Words:</h2>
+    <table>
+        <tr>
+            <th>Word</th>
+            <th>Count</th>
+        </tr>
+        @foreach (var word in Model.TopWords)
+        {
+            <tr>
+                <td>@word.Word</td>
+                <td>@word.Count</td>
+            </tr>
+        }
+    </table>
+}
+@if (Model != null && Model.ImagesXP != null && Model.ImagesXP.Any())
+{
+    <h2>Images:</h2>
+    <div class="carousel">
+        @foreach (var image in Model.ImagesXP)
+        {
+            <img src="@image.Url" alt="Image" />
+        }
+    </div>
+}
