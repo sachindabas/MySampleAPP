@@ -25,4 +25,5 @@
 - minor validation like the empty text is out of scope
 
 # output
+ ![Screenshot of the expected result.](./appresult.jpg)
  
